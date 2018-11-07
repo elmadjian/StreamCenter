@@ -1,0 +1,14 @@
+h1 {
+    font-weight: 100;
+    font-size: 4em;
+}
+
+.circle {
+    max-width: 50%;
+}
+
+.channel {
+    background-color:gainsboro;
+    padding-top: 5em;
+    height: 100vh;
+}
