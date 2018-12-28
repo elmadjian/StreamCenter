@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Kodi
+Exec=/usr/bin/kodi
+Type=Application
+NoDisplay=true
+Catergories=System;
+MimeType=x-scheme-handler/app;
