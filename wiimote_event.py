@@ -18,6 +18,7 @@ def exit_this(signum, frame):
 
 
 def find_device(cv, kill):
+    global device
     while not kill:
         devices = [evdev.InputDevice(fn) for fn in evdev.list_devices()]
         for d in devices:
@@ -27,6 +28,7 @@ def find_device(cv, kill):
         time.sleep(1)
         #print(device)
         if device is not None:
+            #print('found device')
             with cv:
                 cv.notify_all()
                 time.sleep(1)
@@ -34,9 +36,11 @@ def find_device(cv, kill):
 
 
 def run_device(cv, kill):
+    global device
     while not kill:
-        if device is not None:
-            for event in device.read_loop():
+        try:
+            event = device.read_one()
+            if event is not None:
                 if event.type == ecodes.EV_KEY:
                     #print(event.code)
                     
@@ -53,18 +57,19 @@ def run_device(cv, kill):
                         os.system("killall chromium")
                         subprocess.Popen(["chromium","--start-fullscreen",
                                     "/home/cadu/StreamCenter/welcome.html"])
-        else:
+        except Exception as e:
+            #print('no device available')
             with cv:
                 cv.notify_all()
                 time.sleep(1)
                 cv.wait()
 
 
-find = threading.Thread(target=find_device, args=(control, kill,))
-run  = threading.Thread(target=run_device, args=(control, kill,))
+find = threading.Thread(target=find_device, args=(control,kill,))
+run  = threading.Thread(target=run_device, args=(control,kill,))
 find.start()
 run.start()
-print("joining threads...")
+print("waiting for threads to finish...")
 find.join()
 run.join()
 print("exiting...")
