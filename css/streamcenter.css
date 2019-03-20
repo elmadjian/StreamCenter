@@ -5,6 +5,8 @@ h1 {
 
 .circle {
     max-width: 50%;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 .channel {
