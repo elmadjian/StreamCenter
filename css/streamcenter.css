@@ -4,13 +4,20 @@ h1 {
 }
 
 .circle {
-    max-width: 50%;
-    margin-top: 10px;
-    margin-bottom: 30px;
+    max-width: 100%;
 }
 
 .channel {
-    background-color:gainsboro;
+    background-color: darkgray;
     padding-top: 5em;
     height: 100vh;
+}
+
+.box {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.item {
+    margin: 0 15px 0 15px;
 }
