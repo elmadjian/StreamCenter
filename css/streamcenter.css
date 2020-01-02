@@ -3,21 +3,32 @@ h1 {
     font-size: 4em;
 }
 
-.circle {
-    max-width: 100%;
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: darkgray;
 }
 
-.channel {
-    background-color: darkgray;
-    padding-top: 5em;
-    height: 100vh;
+.title {
+    padding: 20px;
+    background-color: white;
+}
+
+.circle {
+    max-width: 90%;
 }
 
 .box {
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    background-color: darkgray;
 }
 
 .item {
-    margin: 0 15px 0 15px;
+    /* margin: 0 25px 0 25px; */
+    justify-self: center;
+    align-self: center;
+    margin: 25px;
 }
