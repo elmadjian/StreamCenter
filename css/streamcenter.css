@@ -32,3 +32,6 @@ body {
     align-self: center;
     margin: 25px;
 }
+.very-strong {
+    font-weight: 900;
+}
